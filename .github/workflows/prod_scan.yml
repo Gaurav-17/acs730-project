@@ -20,7 +20,7 @@ on:
 
 jobs:
   terrascan_job:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     name: terrascan-action
     steps:
     - name: Checkout repository
