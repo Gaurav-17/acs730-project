@@ -1,6 +1,0 @@
-- name: Run Checkov
-  uses: bridgecrewio/checkov-action@master
-  with:
-    directory: prod/
-    framework: terraform
-

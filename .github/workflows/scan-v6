@@ -1,0 +1,4 @@
+- name: Run tfsec
+  uses: aquasecurity/tfsec-action@main
+  with:
+    directory: prod/
