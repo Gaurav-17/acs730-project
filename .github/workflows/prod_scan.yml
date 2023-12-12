@@ -19,32 +19,27 @@ on:
       - prod/**
 
 jobs:
-  terrascan_tflint_staging:
-    name: Run Terrascan sarif report
+  terrascan_job:
     runs-on: ubuntu-latest
-    
+    name: terrascan-action
     steps:
-      - name: Clone repo
-        uses: actions/checkout@v3
-
-      - name: Setup Terrascan
-        run: |
-          curl -L "$(curl -s https://api.github.com/repos/accurics/terrascan/releases/latest | jq -r .assets[].browser_download_url | grep 'linux_amd64' | head -n 1)" > terrascan.zip
-          unzip terrascan.zip
-          sudo mv terrascan /usr/local/bin/
-          terrascan version
-
-      - name: Init Terrascan
-        run: terrascan init
-        working-directory: ./prod
-
-      - name: Run Terrascan
-        run: terrascan scan -o sarif
-        working-directory: ./prod
-        env:
-          TERRASCAN_OPTIONS: "--exit-code 1" # Adjust options as needed
-
-      - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: terrascan.sarif
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Run Terrascan
+      id: terrascan
+      uses: tenable/terrascan-action@main
+      with:
+        iac_type: 'terraform'
+        #iac_version: 'v14'
+        policy_type: 'aws'
+        only_warn: true
+        sarif_upload: true
+        #non_recursive:
+        #iac_dir:
+        #policy_path:
+        #skip_rules:
+        #config_path:
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v1
+      with:
+        sarif_file: terrascan.sarif
