@@ -22,28 +22,25 @@ jobs:
   terrascan_job:
     runs-on: self-hosted
     name: terrascan-action
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-    - name: Run Terrascan
-      id: terrascan
-      uses: tenable/terrascan-action@main
-      with:
-        iac_type: 'terraform'
-        #iac_version: 'v14'
-        policy_type: 'aws'
-        only_warn: true
-        sarif_upload: false
-        #non_recursive:
-        #iac_dir:
-        #policy_path:
-        #skip_rules:
-        #config_path:
 
-    - name: Replace "git://" with "file://" in SARIF file
-      run: sed -i 's|"git://|\"file://|g' terrascan.sarif
-    - name: Upload SARIF file
-      uses: github/codeql-action/upload-sarif@v2
-      with:
-        sarif_file: terrascan.sarif
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Run Terrascan
+        id: terrascan
+        uses: tenable/terrascan-action@main
+        with:
+          iac_type: 'terraform'
+          policy_type: 'aws'
+          only_warn: true
+          sarif_upload: false
+
+      - name: Replace "git://" with "file://" in SARIF file
+        run: sed -i 's|git://|file://|g' terrascan.sarif
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v2
+        with:
+          sarif_file: terrascan.sarif
    
