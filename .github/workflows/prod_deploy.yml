@@ -159,7 +159,7 @@ jobs:
     
       - name: Terraform Plan
         id: plan
-        run: terraform plan -input=false -no-color -out tf1.plan
+        run: terraform plan -input=false -no-color -out tf2.plan
         working-directory: ./prod/webserver # Use your environment folder
         continue-on-error: true
 
@@ -168,7 +168,7 @@ jobs:
       
       - name: Terraform Show
         id: show
-        run: terraform show -no-color tf1.plan 2>&1 > /tmp/plan1.txt
+        run: terraform show -no-color tf2.plan 2>&1 > /tmp/plan2.txt
         working-directory: ./prod/webserver # Use your environment folder
           
       - uses: actions/github-script@v6
@@ -177,7 +177,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const fs = require("fs");
-            const plan = fs.readFileSync("/tmp/plan1.txt", "utf8");
+            const plan = fs.readFileSync("/tmp/plan2.txt", "utf8");
             const maxGitHubBodyCharacters = 65536;
 
             function chunkSubstr(str, size) {
@@ -213,6 +213,6 @@ jobs:
 
       - name: Terraform Apply
         #if: github.ref == 'refs/heads/dev/' #&& github.event_name == 'push'
-        run: terraform apply -input=false tf1.plan
+        run: terraform apply -input=false tf2.plan
         working-directory: ./prod/webserver # Use your environment folder
         shell: bash
