@@ -118,8 +118,7 @@ jobs:
         shell: bash
 
 
-jobs:
-  terraform:
+  terraformserver:
     name: "Terraformserver"
     runs-on: self-hosted
     environment: prod
