@@ -1,2 +1,0 @@
-- name: Run Sentinel
-  run: sentinel apply -config=sentinel.hcl
