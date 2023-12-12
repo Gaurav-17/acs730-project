@@ -20,7 +20,7 @@ permissions:
 jobs:
   terraformnetwork:
     name: "TerraformNetwork"
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     environment: prod
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -120,7 +120,7 @@ jobs:
 
   terraformserver:
     name: "Terraformserver"
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     environment: prod
     env:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
