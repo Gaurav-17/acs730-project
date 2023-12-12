@@ -3,54 +3,48 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 
-name: tfsec
+name: terrascan
 
 on:
   push:
-    branches: [ "dev", "staging"]
-    paths: 
-    - prod/**
+    branches:
+      - dev
+      - staging
+    paths:
+      - prod/**
   pull_request:
-    branches: [ "prod" ]
-    paths: 
-    - prod/**
+    branches:
+      - prod
+    paths:
+      - prod/**
 
 jobs:
-  tfsec_tflint_staging:
-    name: Run tfsec sarif report
-    runs-on: self-hosted
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
-
+  terrascan_tflint_staging:
+    name: Run Terrascan sarif report
+    runs-on: ubuntu-latest
+    
     steps:
       - name: Clone repo
         uses: actions/checkout@v3
-      
-      - uses: terraform-linters/setup-tflint@v2
-        name: Setup TFLint
-        with:
-           tflint_version: v0.38.1
-           
-      - name: Show version
-        run: tflint --version
 
-      - name: Init TFLint
-        run: tflint --init
+      - name: Setup Terrascan
+        run: |
+          curl -L "$(curl -s https://api.github.com/repos/accurics/terrascan/releases/latest | jq -r .assets[].browser_download_url | grep 'linux_amd64' | head -n 1)" > terrascan.zip
+          unzip terrascan.zip
+          sudo mv terrascan /usr/local/bin/
+          terrascan version
+
+      - name: Init Terrascan
+        run: terrascan init
         working-directory: ./prod
 
-      - name: Run TFLint
-        run: tflint -f compact
+      - name: Run Terrascan
+        run: terrascan scan -o sarif
         working-directory: ./prod
-
-      - name: Run tfsec
-        uses: aquasecurity/tfsec-sarif-action@9a83b5c3524f825c020e356335855741fd02745f
-        with:
-          sarif_file: tfsec.sarif
+        env:
+          TERRASCAN_OPTIONS: "--exit-code 1" # Adjust options as needed
 
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v2
         with:
-          # Path to SARIF file relative to the root of the repository
-          sarif_file: tfsec.sarif
+          sarif_file: terrascan.sarif
