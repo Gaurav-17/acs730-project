@@ -20,7 +20,7 @@ on:
 
 jobs:
   terrascan_job:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     name: terrascan-action
 
     steps:
