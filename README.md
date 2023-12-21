@@ -5,11 +5,8 @@ acs730project
 
 ## Contributors
 
-- Lihiniw001 - Lihini Anuththara Jasin Wijenayake - 180741217
-- rohanpamnani1004- Rohan Vinodkumar Pamnani - 178626219
 - Gaurav-17 - Gaurav Jankbhai Patel - 153169222
-- drana29 - Dharmik Rana - 166817221
-- harshthakkar28 - Harsh Jagdish Thakkar - 11592221
+
 ```
 
 ## Introduction
