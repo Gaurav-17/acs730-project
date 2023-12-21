@@ -1,11 +1,10 @@
-# acs730-project
-acs730project
+# AWS Cloud-DevOps project
 
 # Two-Tier Web Application Automation with Terraform, Ansible, and GitHub Actions
 
 ## Contributors
 
-- Gaurav-17 - Gaurav Jankbhai Patel - 153169222
+- Gaurav-17 - Gaurav Patel 
 
 ```
 
@@ -48,33 +47,9 @@ GitHub Actions automatically scans each push to the staging branch and pull requ
 ## Cleaning Up
 Run terraform destroy in the environment directory to clean up resources.
 
-## Contributors
-- *Dharmik*: Security scanning with Terraform and GitHub Actions.
-- *Harsh Thakkar*: Configuration and management of Terraform code for Webservers.
-- *Gaurav*: Ansible playbook development and execution and overall pull flow and troubleshooting any technical errors. Also managing the github repos.
-- *Lihini*: Workflow automation and Terraform launch configurations.
-- *Rohan*: Terraform network infrastructure design and implementation via terraform.
-
-## Challenges and Learnings
-[Discuss the challenges each member faced, the solutions developed, and any new insights gained.]
-
-There would inevitably be difficulties. Our first challenges were figuring out which Terraform options were specific to our multi-environment architecture and how to safely transfer photos from S3 buckets to private locations. We overcame these problems by using iterative testing and peer cooperation, and we improved our code by making frequent changes that showed our increasing skill.
-
-The challenge that Dharmik faced was some simple syntax errors, dharmik was trying to establish an infrastructure where DevOps tools try to communicate with each other and there were times that we did not know what the problem was and finally we realised that it was not a huge hassle or a lack of knowledge problem but a small syntax error.
-
-Harsh's task was to deploy the webserver but for some reason the server was not deploying correctly where in harsh had to dive in deep with the security groups and the correct environment to complete the task. The main issue was to install the servers into just first two AZ zones and also finding a way to bifurcate httpd installed and not installed web servers.
-
-Rohan's initial task was to understand the whole infrastructure such as what subnets and what resources to be deployed for which the team had to meet on a zoom call and talk about the diagram and infrastructure of the project.
-
-Lihini's major task was to get the system running by making two jobs run, one for the network infrastructure and one for the webserver respectively and there were some issues with file naming errors as we were using the same file to save workflow information for both the jobs, also we used a self-hosted runner so we also had to configure and troubleshoot on how to use it.
-
-Gaurav's main task was to deploy the ansible via the dynamic inventory. For that me and Harsh together had to figure out a way on how to bifurcate webservers who needs to install httpd service via tags and than apply the configurations via ansible.
-
-
-
 
 ## Conclusion
-Using Terraform, Ansible, and GitHub Actions, our team expertly negotiated the challenges of deploying a two-tier web application throughout the course of our final project for ACS730. By automating the deployment of infrastructure and application code, the project demonstrated the revolutionary power of DevOps methods and improved our operational efficiency and commitment to a DevOps culture.
+Using Terraform, Ansible, and GitHub Actions, I expertly negotiated the challenges of deploying a two-tier web application throughout the course of this project for DevOps CI/CD pipeline. By automating the deployment of infrastructure and application code, the project demonstrated the revolutionary power of DevOps methods and improved our operational efficiency and commitment to a DevOps culture.
 
 
 Using GitHub Actions was essential to simplifying our process. An early and strong security posture was established in the development process by doing security scans on every commit. We were able to confidently and controllably swiftly spread changes across dev, staging, and prod environments by automating Terraform deployments. Ansible introduced a unique learning curve, especially when it came to playbook administration and Dynamic Inventory. Nevertheless, our persistence paid off as we were able to automate our web servers' configuration, guaranteeing dependable and consistent arrangements.
