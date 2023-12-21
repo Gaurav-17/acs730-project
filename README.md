@@ -8,8 +8,8 @@
 
 ```
 
+![image](https://github.com/Gaurav-17/aws-project/assets/64305413/9010070b-0ecf-4b2f-a386-2c18e3d5f81c)
 
-![image](https://github.com/Gaurav-17/aws-project/assets/64305413/8f89409d-dcc0-41e4-9286-7a26d41a9586)
 
 ## Introduction
 This repository contains Terraform configurations and Ansible Playbooks to automate the deployment of a two-tier web application in AWS. It leverages Infrastructure as Code (IaC) practices with Terraform and configuration management with Ansible. GitHub Actions are integrated for security scanning and deployment automation.
