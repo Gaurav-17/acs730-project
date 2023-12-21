@@ -1,15 +1,14 @@
 # AWS Cloud-DevOps project
 
 # Two-Tier Web Application Automation with Terraform, Ansible, and GitHub Actions
+![image](https://github.com/Gaurav-17/aws-project/assets/64305413/306457d8-9134-4db4-90b4-69599e9a051d)
+
 
 ## Contributors
 
 - Gaurav-17 - Gaurav Patel 
 
 ```
-
-![image](https://github.com/Gaurav-17/aws-project/assets/64305413/9010070b-0ecf-4b2f-a386-2c18e3d5f81c)
-
 
 ## Introduction
 This repository contains Terraform configurations and Ansible Playbooks to automate the deployment of a two-tier web application in AWS. It leverages Infrastructure as Code (IaC) practices with Terraform and configuration management with Ansible. GitHub Actions are integrated for security scanning and deployment automation.
