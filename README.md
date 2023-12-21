@@ -1,7 +1,8 @@
 # AWS Cloud-DevOps project
 
 # Two-Tier Web Application Automation with Terraform, Ansible, and GitHub Actions
-![image](https://github.com/Gaurav-17/aws-project/assets/64305413/306457d8-9134-4db4-90b4-69599e9a051d)
+
+![image](https://github.com/Gaurav-17/aws-project/assets/64305413/ffc38497-9be0-4c38-8014-98f2add8388a)
 
 
 ## Contributors
